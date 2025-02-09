@@ -1,4 +1,4 @@
-# 🏎 Formula One Radio Natural Language Processing 🏎️
+# Formula One Radio Natural Language Processing 🏎️
 
 ## Project Overview
 This project applies Natural Language Processing (NLP) techniques to analyze a corpus extracted from a Formula 1 race radio transcript. The goal is to preprocess, analyze, and visualize the textual data using various NLP methodologies.
