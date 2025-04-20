@@ -1,7 +1,18 @@
-# Formula One Radio Natural Language Processing 🏎️
+# Formula One Radio Natural Language Processing : Emotion, Sentiment & Strategy Intent Detection 🏎️
 
-## Project Overview
-This project applies Natural Language Processing (NLP) techniques to analyze a corpus extracted from a Formula 1 race radio transcript. The goal is to preprocess, analyze, and visualize the textual data using various NLP methodologies.
+## Project Overview  
+This project applies Natural Language Processing (NLP) techniques to analyze team radio communications from a Formula 1 race. It includes full text preprocessing, exploratory analysis, **radio sentiment and emotion detection using a fine-tuned BERT model**, and **strategic intent classification using TF-IDF vectorization and Logistic Regression**.
+
+The goal is to understand not only the structure of the radio messages, but also the **emotional tone** and **strategic content** conveyed during critical moments of the race.
+
+Beyond analysis, this tool offers **practical utility for the team pit wall**:
+
+- **Strategic Intent Detection** allows teams to be instantly alerted when a rival driver reports an incoming pit stop, tire degradation, or plans for a strategy shift — enabling quick reactions such as preparing an undercut or responding to a threat.
+
+- **Emotion and Sentiment Detection** helps monitor when rival teams raise complaints (e.g., gaining unfair advantage), so teams can take immediate corrective actions like giving a position back to avoid penalties.
+
+By automatically parsing opponent team radios, this tool reduces the cognitive load on race engineers and strategists, helping them focus more on decision-making and less on manually decoding rival communications.
+
 
 ## Features
 The project includes the following steps:
@@ -18,10 +29,14 @@ The project includes the following steps:
 
 6. **Stop Word Removal** – Eliminating common, less informative words such as "the," "is," and "and" to improve the efficiency and accuracy of text analysis by focusing on meaningful words.
 
+7. **Radio Sentiment and Emotion Analysis** – A transformer-based model (DistilRoBERTa fine-tuned for emotion classification) is used to detect emotions like joy, anger, and frustration within each radio message. This provides a deeper understanding of driver/team communication tone during the race.
+
+8. **Race Strategy Intent Detection** – A TF-IDF + Logistic Regression pipeline is implemented to classify utterances into strategic intents such as attack, pitting, defending, confirmation, etc. It highlights tactical insights and patterns in race communications.
+
 ## Dependencies
 Ensure you have the following dependencies installed:
 ```bash
-pip install nltk matplotlib wordcloud pandas seaborn
+pip install nltk matplotlib wordcloud pandas seaborn scikit-learn transformers
 ```
 
 ## Setup & Usage
@@ -41,10 +56,13 @@ pip install nltk matplotlib wordcloud pandas seaborn
 - **NLTK** is used for tokenization, POS tagging, NER, stemming, and lemmatization.
 - **WordCloud** is used to generate a visualization of frequent words.
 - The processed data is structured and displayed in tabular format.
+- **HuggingFace Transformers** and a fine-tuned **DistilRoBERTa model** (`j-hartmann/emotion-english-distilroberta-base`) are used for emotion classification of each message.
+- **TF-IDF vectorization** combined with **Logistic Regression** is used to train a multi-class classifier for identifying strategic race intents in radio messages. The classification uses a one-vs-rest (OvR) strategy, where a separate binary logistic regression model is trained for each intent class to distinguish it from all other classes. During inference, all models output a probability score, and the class with the highest probability is selected as the predicted intent.
 
 ## Author
 **Pranit Abraham Thomas**
 
 ## License
 This project is licensed under the MIT License.
+```
 
