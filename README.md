@@ -65,7 +65,7 @@ pip install nltk matplotlib wordcloud pandas seaborn scikit-learn transformers
 ## License
 This project is licensed under the MIT License.
 
-##Note:
+## Note:
 The radio communications text used in this project is owned by Formula 1 Group. © 2025 Formula 1 Group. All rights reserved.
 ```
 
